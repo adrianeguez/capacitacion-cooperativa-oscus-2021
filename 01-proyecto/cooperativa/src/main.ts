@@ -1,4 +1,4 @@
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, KeyValueDiffers } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
@@ -310,6 +310,145 @@ const arregloDatos = [
   }
 ];
 
+// for (let i; i>arreglo.length; i--){
+//     console.log('valorActual', arreglo[i]);
+// }
+
+// FOREACH
+// ITERAR 
+// Devuelve undefined
+
+const respuestaForEach = arregloDatos
+        .forEach(
+          function (valorActual, indiceActual, arregloCompleto){
+            console.log('valorActual', valorActual);
+            console.log('indiceActual', indiceActual);
+            console.log('arregloCompleto', arregloCompleto);
+            // return NO HAY RETURN
+          }
+        );
+
+console.log('respuestaForEach', respuestaForEach);  // undefined
+
+// FIND (ENCUENTRA EL PRIMERO)
+// devolver dentro de la funcion una expresion -> TRUTY FALSY
+// respuesta ELEMENTO ENCONTRADO (No existe es undefined)
+
+const respuestaFind = arregloDatos
+    .find(
+        function (valorActual, indiceActual, arregloCompleto) {
+            console.log('valorActual', valorActual);
+            return valorActual.nombre === 'Cristian';
+        }
+    );
+console.log('respuestaFind', respuestaFind);  // No encuentra -> undefined
+
+// FINDINDEX
+// devolver dentro de la funcion una expresion -> TRUTY FALSY
+// respuesta INDICE ELEMENTO ENCONTRADO (No existe es undefined)
+
+const respuestaIndex = arregloDatos
+    .findIndex(
+        function (valorActual, indiceActual, arregloCompleto) {
+            console.log('valorActual', valorActual);
+            console.log('indiceActual', indiceActual);
+            console.log('arregloCompleto', arregloCompleto);
+            return valorActual.nombre === "Cristian";
+        }
+    );
+
+console.log('respuestaIndex', respuestaIndex);  // undefined
+
+// MAP (cuando queramos modificar el arreglo)
+// Devolvemos nuevo elemento
+// respuesta NUEVO ARREGLO (Con los valores devueltos)
+
+const respuestaMap = arregloDatos
+    .map(
+        (valorActual, indiceActual, arregloCompleto) => {
+            const nuevoElemento = {
+                id: valorActual.id,
+                nombre: valorActual.nombre,
+                nota: valorActual.nota + 1,
+            };
+            return nuevoElemento;
+            // return 15; // [15,15,15,15,15,15,15]
+        }
+    );
+console.log('respuestaMap', respuestaMap);
+console.log('arregloDatos', arregloDatos);
+
+// FILTER
+// Devolvemos EXPRESION (Truty Falsy)
+// respuesta NUEVO ARREGLO ELEMENTOS FILTRADOS
+
+const respuestaFilter = arregloDatos
+    .filter(
+        (valorActual, indiceActual, arregloCompleto) => {
+            // return valorActual.nota < 9;
+            return valorActual.nota >= 14;
+        }
+    );
+
+console.log('respuestaFilter', respuestaFilter);
+console.log('arregloDatos', arregloDatos);
+
+// AND OR
+// true AND true AND true -> true
+// true AND true AND false -> false
+// true OR true OR true -> true
+// true OR true OR false -> true
+// false OR false OR false -> true
+
+// (OR) -> SOME
+// DEVOLVER EXPRESION (Truty Falsy)
+// Hay ALGUNA nota menor a nueve? SI X NO
+// Recibimos un boolean TRUE o FALSE
+
+const respuestaSome = arregloDatos
+    .some(
+        (valorActual, indiceActual, arregloCompleto) => {
+            return valorActual.nota < 9;
+        }
+    );
+console.log('respuestaSome', respuestaSome);
+
+// EVERY -> expresion
+// DEVUELVE BOOLEANO
+// TODAS las notas son mayores a 14? SI NO
+// AND
+
+const respuestaEvery = arregloDatos
+    .every(
+        (valorActual, indiceActual, arregloCompleto) => {
+            return valorActual.nota > 14;
+        }
+    );
+console.log('respuestaEvery', respuestaEvery); // true / false
+
+// REDUCE
+// VALOR
+// [1,2,3,5,6,5,4,3,1]
+// reduce       izq -> der
+// reduceRight  der -> izq
+
+// 1) Funcion calcular lo acumulado
+// 2) Valor inicial Acumulador (0)
+
+const respuestaReduce = arregloDatos
+      .reduce(
+        function (valorAcumulado, valorActual, indice, arreglo){
+          return valorAcumulado + valorActual.nota;
+        },
+        0 // Valor inicial del acumulador
+      );
+const promedio = respuestaReduce / arregloDatos.length;
+console.log('Promedio', promedio);
+
+arregloDatos
+    .map(v => v.nota * 1.3) // anadiendo el 30 %
+    .filter((nota) => nota < 9) // Busco a los < 9
+    .reduce((acumulado, actual) => acumulado + actual, 0)
 
 
 
@@ -328,14 +467,4 @@ const arregloDatos = [
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+    
