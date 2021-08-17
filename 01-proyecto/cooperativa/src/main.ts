@@ -23,7 +23,7 @@ console.log("Hola mundo Adrian :)");
 // Mutables Inmutables
 
 // Mutables
-var nombre = 'Adrian'; // NUNCA USAR VAR
+let nombre = 'Adrian'; // NUNCA USAR VAR
 let nombreLet ='Adrian';
 nombre = 'Vicente';
 nombreLet = 'Vicente';
@@ -34,13 +34,13 @@ const nombreConst = 'Adrian';
 // Tipos de variables (primitivas)
 // Duck Typing
 
-let numero = 1; // number
+const numero = 1; // number
 // let numero: number = 1; // number
 // numero = 'Adrian'; No podemos asignar un string a un numero
-const sueldo:number = 1.2;
-const texto: string = 'Adrian';
+const sueldo = 1.2;
+const texto = 'Adrian';
 // const texto: string = "Adrian";
-const casado: boolean = false;
+const casado = false;
 let hijos: any = null; // any -> CUALQUIER COSA
 hijos = 12;
 hijos = 'Uno';
@@ -220,14 +220,14 @@ const arregloTodo: Array<any> = [
 
 // for of 
 
-for (let numero of arreglo) { // VALORES
+for (const numero of arreglo) { // VALORES
   console.log('numero', numero);
 }
 
 
 // for in
 
-for (let indice in arreglo) { // INDICES
+for (const indice in arreglo) { // INDICES
   arreglo[indice];
   console.log('indice', indice);
 }
@@ -450,21 +450,402 @@ arregloDatos
     .filter((nota) => nota < 9) // Busco a los < 9
     .reduce((acumulado, actual) => acumulado + actual, 0)
 
+// FUNCIONES
+// DUCK TYPING
 
 
+function sinParametros(): void { // undefined
+  console.log('Hola mundo');
+}
 
+function soloNumeros(a: number, b: number, c: number): number {
+  return a - b + c; // valor a devolver
+}
 
+// soloNumeros('v', true,[1,2,3]);
+soloNumeros(1, 2, 3); // 3
 
+// Funciones nombradas
+function funcionNombrada(){
 
+}
+funcionNombrada();
 
+// Funciones ANONIMAS (no tienen nombre)
 
+const funcionSinNombre = function(){};
+const funcionOpcionalPongoNombre = function nombre(){};
 
+funcionSinNombre();
+funcionOpcionalPongoNombre();
 
+// FAT ARROW FUNCTIONS => ->
 
+const funcionFlechaUno = () => { }
+// const funcionFlechaDos = (a: number) => { return a + 1; }
+// const funcionFlechaTres = (a: number) => a + 1
+// const funcionFlechaCuatro = a => a + 1
+// const funcionFlechaCinco = (a: number, b: number) => a + b;
+// funcionFlechaDos(1);
+// funcionFlechaTres(3);
+// funcionFlechaCuatro(4);
+// funcionFlechaCinco(1, 2);
 
+function sumarNumeros(numeroInicial: number, // 1
+                      ...otrosNumeros: number[]) { // Parametros Inf [2,3,4,5,...]
+  let total = 0;
+  otrosNumeros.forEach(
+    (valorActual) => {
+        total = total + valorActual;
+    }
+  );
+  return numeroInicial + total;
+}
+sumarNumeros(1);
+sumarNumeros(1,2);
+sumarNumeros(1,2,3,4,5,6,7,8,9,10,11);
 
+// CALLBACKS (Funcion asincrona -> )
 
+console.log('PRIMERO');
 
+/*
 
+// CALBACK HELL
 
+setTimeout( 
+      ()=>{ // Lista BDD1
+        console.log('CONSULTA BDD 1');
+
+        setTimeout( 
+          ()=>{ // Lista HTTP2
+            console.log('CONSULTA HTTP 2');
     
+            setTimeout( 
+              ()=>{ // Lista HTTP2
+                console.log('CONSULTA HTTP 3');
+        
+                setTimeout( 
+                  ()=>{ // Lista HTTP2
+                    console.log('CONSULTA HTTP 3');
+                    setTimeout( 
+                      ()=>{ // Lista HTTP2
+                        console.log('CONSULTA HTTP 3');
+                        setTimeout( 
+                          ()=>{ // Lista HTTP2
+                            console.log('CONSULTA HTTP 3');
+                            setTimeout( 
+                              ()=>{ // Lista HTTP2
+                                console.log('CONSULTA HTTP 3');
+                                setTimeout( 
+                                  ()=>{ // Lista HTTP2
+                                    console.log('CONSULTA HTTP 3');
+                                    setTimeout( 
+                                      ()=>{ // Lista HTTP2
+                                        console.log('CONSULTA HTTP 3');
+                                        setTimeout( 
+                                          ()=>{ // Lista HTTP2
+                                            console.log('CONSULTA HTTP 3');
+                                    
+                                            setTimeout( 
+                                              ()=>{ // Lista HTTP2
+                                                console.log('CONSULTA HTTP 3');
+                                                setTimeout( 
+                                                  ()=>{ // Lista HTTP2
+                                                    console.log('CONSULTA HTTP 3');
+                                            
+                                                    
+                                                    },
+                                                  1
+                                                );
+                                                
+                                                },
+                                              1
+                                            );
+                                            },
+                                          1
+                                        );
+                                        
+                                        },
+                                      1
+                                    );
+                                    
+                                    },
+                                  1
+                                );
+                                
+                                },
+                              1
+                            );
+                            
+                            },
+                          1
+                        );
+                        
+                        },
+                      1
+                    );
+                    
+                    },
+                  1
+                );
+                },
+              1
+            );
+
+          },
+        1
+      );
+
+      },
+    1
+);
+*/
+console.log('SEGUNDO');
+
+
+// PROMESAS
+
+
+const sumarNumeroPromesa = new Promise(
+  (resolve, reject)=>{
+    resolve(14); // return
+  }
+);
+const sumarNumeroError = new Promise(
+  (resolve, reject)=>{
+    reject('Error en suma');  // return
+  }
+);
+
+console.log('Primero');
+
+sumarNumeroPromesa
+  .then( // try 1
+    (datos)=>{
+      console.log('Todo bien', datos);// Siempre va a caer
+      console.log('Tercero');
+      return sumarNumeroPromesa
+    }
+  )
+  .then( // try 2
+    (datos)=>{
+      console.log('Todo bien', datos);// Siempre va a caer
+      console.log('Cuarta');
+      return sumarNumeroPromesa
+    }
+  )
+  .then( // try 3
+    (datos)=>{
+      console.log('Todo bien', datos);// Siempre va a caer
+      console.log('Quinta');
+    }
+  )
+  .catch( // catch (para todos)
+    (error)=>{
+      console.log('Error', error);
+      console.log('Tercero');
+    }
+  )
+
+console.log('Segundo');
+
+// ASYNC AWAIT (solo se puede usar en funciones o metodos de clases)
+
+const flecha = async ()=> 1;
+const anonima = async function (){};
+
+async function ejecutarPromesas(){
+  try{
+    const respuestaPromesaUno = await sumarNumeroPromesa;
+    respuestaPromesaUno; // 15
+    const respuestaPromesaDos = await sumarNumeroPromesa;
+    respuestaPromesaDos; // 25
+    const respuestaPromesaTres = await sumarNumeroPromesa;
+    respuestaPromesaTres; // 25
+  }catch(error){
+    console.error({mensaje:'Error', error:error});
+  }
+}
+
+// MULTIPLES TIPOS
+
+let numerosBoleanosStrings: number | string | boolean = 1;
+
+numerosBoleanosStrings = '1';
+numerosBoleanosStrings = true;
+numerosBoleanosStrings = 15;
+
+const operacion = (numerosBoleanosStrings as number) + 10; // CASTEO
+const otro = (numerosBoleanosStrings as any) as string;
+const otroDos = (numerosBoleanosStrings as any) as boolean;
+
+// Para tipar OBJETOS
+
+enum EstadoUsuario{ // -> TRANSPILA A JS -> NO OCUPA ESPACIO
+  Acuerdo = 'AC',
+  Inacuerdo = 'IN',
+  Bien = 'BN'
+}
+EstadoUsuario.Acuerdo; // 'AC'
+
+// Interfaces en JS se usan para tipar los datos.
+// TRABAJAR DE MANERA DEFENSIVA
+
+interface Usuario { // -> TRANSPILA A JS -> NO OCUPA ESPACIO
+  nombre?: string;
+  apellido?:string;
+  edad?: number; // ? -> OPCIONAL es decir o es un number | undefined
+  estado?: EstadoUsuario;
+  // funciones
+  imprimirUsuario?: (mensaje: string) => string | boolean;
+  calcularImpuesto?: (impuesto: number) => number;
+  estadoActual?: () => EstadoUsuario;
+}
+
+const adrianJson: Usuario = {
+  nombre: 'Adrian',
+  apellido: 'Eguez',
+  estado: EstadoUsuario.Bien,
+  edad: 32
+}
+
+if(adrianJson.edad){
+  adrianJson.edad; // 32 -> calculos
+}
+
+// Clases
+
+class Persona {
+  public nombre: string;
+  // public apellido: string;
+  apellido?: string; // Public es el modificador de acceso por defecto
+  private cedula = '111111';
+  static nombreReferencial = 'Humano';
+  protected nombreYApellido = '';
+
+  constructor(
+    nombreParametro: string,
+    apellidoParametro?: string,
+  ) {
+      this.nombre = nombreParametro;
+      this.apellido = apellidoParametro;
+      this.nombreYApellido = this.nombre + ' ' + this.apellido;
+  }
+
+  private mostrarNombreApellido(): string {
+    return this.nombreYApellido;
+  }
+  
+}
+
+class UsuarioPrincipal extends Persona {
+  // public cedula: string; X
+  constructor(
+    nombreParametro: string, // PARAMETROS
+    apellidoParametro: string, // PARAMETROS
+    public cedulaPublica: string,
+    public estadoCivil: string,
+    // cedulaParametro: string, // PARAMETROS X
+  ){
+    super(nombreParametro, apellidoParametro);
+    this.cedulaPublica;
+    this.estadoCivil;
+    // this.cedula = cedulaParametro; X
+  }
+
+}
+
+const adrianUP = new UsuarioPrincipal(
+  'Adriam',
+  'Eguez',
+  '1718137159',
+  'soltero'
+);
+console.log(adrianUP.cedulaPublica);
+console.log(adrianUP.estadoCivil);
+
+
+/*
+
+ARCHIVOS Y CARPETAS
+
+ng new PROYECTO -> Crea un nuevo proyecto
+npm i -> instalar dependencias 
+npm run start -> Levantar el proyecto
+npm run COMANDO
+ng serve -> Levantar el proyecto
+
+INSTALACION DEL LINT
+
+npm install --save-dev eslint
+npm i --save-dev @typescript-eslint/eslint-plugin 
+npm i --save-dev @typescript-eslint/parser
+
+USO DEL LINT
+
+LINT -> Reglas de escritura de codigo
+npm run lint -> Corre reglas del lint en nuestro codigo
+
+COMPILAR EL ANGULAR
+
+ng build
+ng build --prod
+npm run build -> compilar para produccion
+npm run build -- --prod -> compilar para produccion
+
+
+/node_modules -> dependencias
+/src -> fuentes
+  /app -> archivos de desarrollo
+     modulo principal
+     componente principal
+     modulo rutas
+  /assets -> archivos estaticos (pdf, img, css, js, .mp3)
+  /environments -> desarrollo, produccion
+  index.html
+  main.ts -> configuraciones
+  polyfills.ts -> funciones que no estan tipadas, les damos un tipo
+  styles.scss -> estilos globales
+  test.ts -> pruebas
+  
+angular.json -> configuraciones del angular
+karma.conf.js -> test
+package.json -> archivo principal proyecto
+tsconfig... -> configuracion para el typescript
+
+GENERAR COMPONENTES
+
+ng generate component ruta-login
+ng g c ruta-login
+
+ng generate component ruta-no-encontrado
+ng g c ruta-no-encontrado
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/ 
+
+
+
+
+
+
+
+
+
+
+
+
+
