@@ -7,7 +7,76 @@
 <p>Objeto nombre: {{objeto.nombre}}</p>
 <p>Arreglo: {{arreglo}}</p> -->
 
+<!-- EMMET -->
+<!-- h1 -->
+<h1>Grillas</h1>
 
+    <!-- columnas -->
+    <!-- 1 - 12 -->
+    <!-- col-sm SMALL-->
+    <!-- col-md MEDIUM-->
+    <!-- col-lg LARGE-->
+<!--
+<div class="row">
+    <div class="col-sm-6 azul">6</div>
+    <div class="col-sm-6 rojo">6</div>
 
+    <div class="col-md-6 verde">6</div>
+    <div class="col-md-6 naranja">6</div>
 
+    <div class="col-lg-6 cafe">6</div>
+    <div class="col-lg-6 amarillo">6</div>
 
+    <div class="col-lg-10 azul">10</div>
+    <div class="col-lg-2 naranja">2</div>
+
+    <div class="col-lg-8 rojo">8</div>
+
+    <div class="col-lg-8 verde">8</div>
+
+    <div class="col-lg-8 amarillo">8</div>
+    <div class="col-lg-4 cafe">4</div>
+
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4 azul">4</div>
+    <div class="col-lg-4"></div>
+
+    <div class="col-lg-8 naranja">
+        8
+        <div class="row">
+            <div class="col-sm-4 rojo">4</div>
+            <div class="col-sm-4 azul">4</div>
+            <div class="col-sm-4 verde">4</div>
+        </div>
+    </div>
+    <div class="col-lg-4 naranja">4</div>
+</div>
+-->
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>{{usuario.nombre}}</h2>
+         <!-- Property Binding [ ] -->
+        <img class="img-fluid" [src]="usuario.imagen" alt="">
+    </div>
+    <div class="col-sm-6">
+        <p>
+            <span class="bold">Descripcion:</span>
+            {{usuario.descripcion}} 
+        </p>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <!-- Event Binding ( ) -->
+                <!-- onclick (sin on) -->
+                <!-- onhover (sin on) -->
+                <button class="w-100 btn btn-info"
+                        (click)="cambiarImagen($event, usuario)"
+                >
+                    Cambiar imagen
+                </button>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+</div>
