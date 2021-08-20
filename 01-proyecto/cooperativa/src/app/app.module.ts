@@ -7,6 +7,7 @@ import { RutaLoginComponent } from './rutas/ruta-login/ruta-login.component';
 import { RutaNoEncontradoComponent } from './rutas/ruta-no-encontrado/ruta-no-encontrado.component';
 import { LogeadoService } from './guards/logeado.service';
 import { MostrarUsuarioComponent } from './componentes/mostrar-usuario/mostrar-usuario.component';
+import { TodosRestModule } from './servicios/rest/todos-rest/todos-rest.module';
 
 @NgModule({ // Decorador
   declarations: [ // Declaramos los componentes de este modulo
@@ -17,7 +18,8 @@ import { MostrarUsuarioComponent } from './componentes/mostrar-usuario/mostrar-u
   ],
   imports: [ // Declaramos los modulos importados dentro de este modulo
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TodosRestModule,
   ],
   providers: [ // Declaramos los servicios declarados en este modulo
     // LogeadoService

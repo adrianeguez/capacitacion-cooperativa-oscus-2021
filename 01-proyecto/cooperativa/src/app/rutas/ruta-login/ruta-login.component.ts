@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TodosRestService } from '../../servicios/rest/todos-rest/todos-rest.service';
+import { TodosInterface } from '../../servicios/rest/todos-rest/interfaces/todos.interface';
 
 @Component({
   selector: 'app-ruta-login',
@@ -27,9 +29,30 @@ export class RutaLoginComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  todos: TodosInterface[] = [];
+
+  // Inyeccion de dependencias
+  constructor(
+    private readonly _todosRestService: TodosRestService
+  ) { }
 
   ngOnInit(): void {
+    // $ => Observable
+    const todos$ = this._todosRestService
+        .obtenerTodos();
+    todos$
+      .subscribe(
+        (todos)=>{ // TRY
+          this.todos = todos;
+          console.log(this.todos);
+        },
+        (error)=>{ // CATCH
+          console.error({
+            error,
+            mensaje: 'Error consultando to dos'
+          });
+        }
+      );
   }
 
 }
