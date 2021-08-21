@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LogeadoService } from './guards/logeado.service';
 import { RutaLoginComponent } from './rutas/ruta-login/ruta-login.component';
 import { RutaNoEncontradoComponent } from './rutas/ruta-no-encontrado/ruta-no-encontrado.component';
+import { RutaUsuarioComponent } from './rutas/ruta-usuario/ruta-usuario.component';
 // 4200:/#/ -> /login  __  4200:/#/alksdfjlaskdfj -> /no-encontrado
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: RutaLoginComponent
+  },
+  {
+    path: 'usuario/:id',
+    component: RutaUsuarioComponent
   },
   { //modulo-finanzas/finanzas
     canActivate: [ // GUARDS

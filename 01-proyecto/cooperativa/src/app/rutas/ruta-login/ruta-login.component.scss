@@ -1,0 +1,17 @@
+.contenedor-todo{
+    border: 2px solid gray;
+    background-color: rgb(217, 223, 243);
+    margin: 5px;
+    padding: 10px;
+}
+.titulo{
+    min-height: 120px;
+}
+.completado{
+   border-color: green;
+   background-color: rgb(189, 226, 186);
+}
+
+.espaciador-boton{
+    margin-top: 5px;
+}

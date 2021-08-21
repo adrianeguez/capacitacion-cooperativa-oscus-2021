@@ -1,6 +1,46 @@
 
-
-
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <button class="btn btn-primary w-100"
+                (click)="crearNuevoTodo()"
+        >
+            Crear
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <h1>Lista de Todos</h1>
+        <p>Selecciona tus todos y editalos o eliminalos.</p>
+    </div>
+    <!-- EMMET -> html rapido -->
+    <div class="col-sm-4" *ngFor="let todo of todos">
+        <div [ngClass]="{
+            'completado': todo.completed
+        }"
+         class="contenedor-todo animacion borde estilo">
+         <h4 class="titulo text-center">{{todo.title}}#{{todo.id}}</h4>
+            <button class="btn btn-info btn-sm w-100 espaciador-boton"
+                    (click)="navegarARutaUsuario(todo.id)"
+            > 
+                Visitar usuario
+            </button>
+            <button class="btn btn-warning btn-sm w-100 espaciador-boton"
+                    (click)="editarTodo(todo.id)"
+            > 
+                Editar usuario
+            </button>
+            <button class="btn btn-danger btn-sm w-100 espaciador-boton"
+                (click)="eliminarTodo(todo.id)"
+            > 
+                Eliminar usuario
+            </button>
+            
+        </div>
+    </div>
+</div>
 
 
 

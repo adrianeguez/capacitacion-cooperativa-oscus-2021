@@ -2,9 +2,38 @@
 
 <h1>Menu</h1>
 
-
+<ul>
+    <li>
+        <!--  '/usuario/1/editar' ['/usuario',1,'editar'] -->
+        <!--  '/modulo-empresa/empresa/1/editar'  -->
+        <!--  ['/modulo-empresa','empresa',1,'editar'] -->
+        
+        
+        <a [routerLink]="['/login']">
+            <button class="btn btn-info btn-sm">
+                Login
+            </button>
+        </a>
+    </li>
+    <li>
+        <a [routerLink]="['/modulo-finanzas', 'finanzas']">
+            <button class="btn btn-info btn-sm">
+                Modulo Finanzas
+            </button>
+        </a>
+    </li>
+    <li>
+        <a [routerLink]="['/modulo-credito', 'credito']">
+            <button class="btn btn-info btn-sm">
+                Modulo Credito
+            </button>
+        </a>
+    </li>
+</ul>
 
 <router-outlet></router-outlet>
+
+<!-- /src/app/rutas  ng generate component ruta-usuario -->
 
 
 <p>Footer</p>

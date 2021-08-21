@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodosRestService } from '../../servicios/rest/todos-rest/todos-rest.service';
 import { TodosInterface } from '../../servicios/rest/todos-rest/interfaces/todos.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ruta-login',
@@ -33,8 +34,19 @@ export class RutaLoginComponent implements OnInit {
 
   // Inyeccion de dependencias
   constructor(
-    private readonly _todosRestService: TodosRestService
+    private readonly _todosRestService: TodosRestService,
+    // import { Router } from '@angular/router';
+    private readonly _router: Router,
   ) { }
+
+  navegarARutaUsuario(id?:number){
+    if(id){
+      const ruta = ['/usuario', id];
+      this._router.navigate(ruta);
+    }
+  }
+
+
 
   ngOnInit(): void {
     // $ => Observable
@@ -53,6 +65,68 @@ export class RutaLoginComponent implements OnInit {
           });
         }
       );
+  }
+
+  crearNuevoTodo(){
+    const nuevoTodo$ = this._todosRestService
+      .crearUno({
+        title: 'Nuevo',
+        completed: true,
+        userId: 1
+      });
+      // bloqueamos pantalla
+    nuevoTodo$
+      .subscribe(
+        (nuevoTodo)=>{
+          // desbloqueamos pantalla
+          this.todos.unshift(nuevoTodo);
+        },
+        (error)=>{
+          // desbloqueamos pantalla
+          console.error({mensaje:'Error todo', error});
+        }
+      );
+  }
+
+  eliminarTodo(id?:number){
+    if(id){
+      const todoEliminado$ = this._todosRestService
+      .eliminarUno(id);
+      todoEliminado$
+        .subscribe(
+          ()=>{
+            console.info({mensaje:'Todo eliminado'});
+            const indice = this.todos.findIndex(t => t.id === id);
+            if(indice){
+              this.todos.splice(indice, 1);
+            } 
+          },
+          (error)=>{
+            console.error({error, mensaje: 'Error eliminando todo'})
+          }
+        );
+    }
+    
+  }
+
+  editarTodo(id?:number){
+    if(id){
+      this._todosRestService.actualizarUno({
+        completed: true,
+        title: 'EDITADO'
+      }, id)
+      .subscribe(
+        (todoActualizado)=>{
+          const indice = this.todos.findIndex(t=> t.id === id);
+          if(indice){
+            this.todos[indice] = todoActualizado;
+          }
+        },
+        (error)=>{
+          console.error({error, mensaje:'No se pudo editar todo'});
+        }
+      )
+    }
   }
 
 }
