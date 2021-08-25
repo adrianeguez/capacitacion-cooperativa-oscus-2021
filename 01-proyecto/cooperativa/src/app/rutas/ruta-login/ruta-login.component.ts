@@ -12,6 +12,10 @@ export class RutaLoginComponent implements OnInit {
 
   mostrarPrimerComponente = true;
 
+  mostrarFormularioCrear = false;
+
+  mostrarBotonCrear = false;
+
   usuarios = [
     {
       nombre: 'Adrian',
@@ -32,12 +36,53 @@ export class RutaLoginComponent implements OnInit {
 
   todos: TodosInterface[] = [];
 
+  nuevoTodo = {
+    title: '',
+    completed: false
+  }
+
   // Inyeccion de dependencias
   constructor(
     private readonly _todosRestService: TodosRestService,
     // import { Router } from '@angular/router';
     private readonly _router: Router,
   ) { }
+
+  escucharEventoFormularioValidoCrear(formulario: {title:string; completed:boolean;} | undefined){
+    if(formulario){
+      this.mostrarBotonCrear = true;
+      this.nuevoTodo = formulario;
+    }else{
+      this.mostrarBotonCrear = false;
+    }
+  }
+  crearNuevoTodo(){
+    const nuevoTodo$ = this._todosRestService
+      .crearUno({
+        ...this.nuevoTodo,
+        userId: 1
+      });
+      // bloqueamos pantalla
+    nuevoTodo$
+      .subscribe(
+        (nuevoTodo)=>{
+          // desbloqueamos pantalla
+          this.todos.unshift(nuevoTodo);
+        },
+        (error)=>{
+          // desbloqueamos pantalla
+          console.error({mensaje:'Error todo', error});
+        }
+      );
+  }
+
+
+
+
+
+
+
+
 
   navegarARutaUsuario(id?:number){
     if(id){
@@ -67,26 +112,7 @@ export class RutaLoginComponent implements OnInit {
       );
   }
 
-  crearNuevoTodo(){
-    const nuevoTodo$ = this._todosRestService
-      .crearUno({
-        title: 'Nuevo',
-        completed: true,
-        userId: 1
-      });
-      // bloqueamos pantalla
-    nuevoTodo$
-      .subscribe(
-        (nuevoTodo)=>{
-          // desbloqueamos pantalla
-          this.todos.unshift(nuevoTodo);
-        },
-        (error)=>{
-          // desbloqueamos pantalla
-          console.error({mensaje:'Error todo', error});
-        }
-      );
-  }
+  
 
   eliminarTodo(id?:number){
     if(id){

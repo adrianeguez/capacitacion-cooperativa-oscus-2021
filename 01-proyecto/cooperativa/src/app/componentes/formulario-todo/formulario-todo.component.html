@@ -1,0 +1,63 @@
+
+
+<!-- FORMULARIOS TEMPLATE DRIVEN -->
+<!-- FORMULARIOS REACTIVOS -->
+
+
+<div *ngIf="todoForm">
+    <form [formGroup]="todoForm" (ngSubmit)="enviarFormulario()">
+        <div class="mb-3">
+          <label for="idTitulo" 
+                 class="form-label">Titulo*:</label>
+          <input type="text" 
+          formControlName="titulo"
+          class="form-control" 
+          id="idTitulo" 
+          aria-describedby="helpTitulo"
+          >
+          <div id="helpTitulo" class="form-text">Ingresa el titulo del To-do.</div>
+          <div *ngIf="todoForm.get('titulo')?.invalid && 
+                      todoForm.get('titulo')?.errors &&
+                      (todoForm.get('titulo')?.dirty || todoForm.get('titulo')?.touched)" class="alert alert-warning" role="alert">
+                <!-- invalid -> valid-->
+                <!-- touched -> untouched-->
+                <!-- dirty -> pristine-->
+                <!--Required-->
+                <span *ngIf="todoForm.get('titulo')?.hasError('required')">
+                    Este campo es requerido
+                </span>
+                <!--MinLength-->
+                <span *ngIf="todoForm.get('titulo')?.hasError('minlength')">
+                    Este campo debe tener mas de 2 caracteres
+                </span>
+                <!--MaxLength-->
+                <span *ngIf="todoForm.get('titulo')?.hasError('maxlength')">
+                    Este campo debe tener menos de 10 caracteres
+                </span>
+          </div>
+          <!--
+          <div *ngIf="todoForm.get('titulo')">
+            <div *ngIf="todoForm.get('titulo').invalid" class="alert alert-warning" role="alert">
+                <span></span>
+            </div>
+          </div>
+          -->
+        </div>
+        <div class="mb-3">
+            <label for="idCompleted" 
+                   class="form-label">Completado:</label>
+            <select id="idCompleted" class="form-select" name="completed" formControlName="completed">
+                <option [value]="true">Completo</option>
+                <option [value]="false">Incompleto</option>
+            </select>
+            <div id="helpTitulo" class="form-text">Seleccione el estado del To-do.</div>
+        </div>
+        <!--
+        <button class="btn btn-success w-100" 
+                [disabled]="todoForm.invalid"
+                type="submit">
+            Crear
+        </button>
+        -->
+    </form>
+</div>

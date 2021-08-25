@@ -50,3 +50,6 @@ export class MostrarUsuarioComponent implements OnInit, OnDestroy {
   }
 
 }
+// /src/app/componentes/
+// ng generate component formulario-todo
+

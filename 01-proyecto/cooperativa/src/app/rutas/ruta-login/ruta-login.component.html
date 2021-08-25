@@ -3,10 +3,26 @@
     <div class="col-sm-4"></div>
     <div class="col-sm-4"></div>
     <div class="col-sm-4">
-        <button class="btn btn-primary w-100"
-                (click)="crearNuevoTodo()"
+        <button class="btn btn-primary w-100" *ngIf="!mostrarFormularioCrear"
+                (click)="mostrarFormularioCrear = !mostrarFormularioCrear"
         >
             Crear
+        </button>
+    </div>
+    <div class="col-sm-12" *ngIf="mostrarFormularioCrear">
+        <app-formulario-todo (formularioValido)="escucharEventoFormularioValidoCrear($event)">
+        </app-formulario-todo>
+        <button class="btn btn-success w-100"
+                [disabled]="!mostrarBotonCrear"
+                (click)="crearNuevoTodo()"
+                (click)="mostrarFormularioCrear = !mostrarFormularioCrear"
+        >
+            Crear
+        </button>
+        <button class="btn btn-secondary w-100 espaciador-boton"
+                (click)="mostrarFormularioCrear = !mostrarFormularioCrear"
+        >
+            Cancelar
         </button>
     </div>
 </div>
