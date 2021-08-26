@@ -11,6 +11,10 @@ import { TodosRestModule } from './servicios/rest/todos-rest/todos-rest.module';
 import { RutaUsuarioComponent } from './rutas/ruta-usuario/ruta-usuario.component';
 import { FormularioTodoComponent } from './componentes/formulario-todo/formulario-todo.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MenuModule} from 'primeng/menu';
 
 @NgModule({ // Decorador
   declarations: [ // Declaramos los componentes de este modulo
@@ -27,6 +31,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     TodosRestModule,
     // import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    MatExpansionModule,
+    // import {MenuModule} from 'primeng/menu';
+    MenuModule,
   ],
   providers: [ // Declaramos los servicios declarados en este modulo
     // LogeadoService

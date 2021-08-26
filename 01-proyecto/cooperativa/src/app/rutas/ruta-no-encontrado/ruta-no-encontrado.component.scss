@@ -1,0 +1,201 @@
+.waveWrapperInner {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    bottom: -1px;
+    background: #08a0fcff !important;
+    background: -webkit-linear-gradient(to right,#08a0fcff,#00bfd9) !important;
+    background: -webkit-gradient(linear,left top,right top,from(#00bfd9),to(#00bfd9)) !important;
+    background: -webkit-linear-gradient(left,#08a0fcff,#00bfd9) !important;
+    background: -o-linear-gradient(left,#08a0fcff,#00bfd9) !important;
+    background: linear-gradient(to right,#08a0fcff,#00bfd9) !important;
+}
+
+.eisticky-menu-bg-overlay {
+    background-color: #09a0fc !important;
+}
+
+.eight-banner-section .eight-banner-content .banner-content-box .ei-banner-btn a:nth-child(1) {
+    background-color: #0b5cb5ff;
+    font-size: 13px;
+}
+.eight-banner-section .eight-banner-content .banner-content-box .ei-banner-btn a:nth-child(1):hover {
+    background-color: #3a74b5;
+}
+
+.eight-banner-section .eight-banner-content .banner-content-box .ei-banner-btn a:nth-child(1) i {
+    display: none;
+}
+.eight-banner-section .eight-banner-content h1 {
+    font-size: 50px;
+}
+// iconos
+
+.eight-section-title .square-shape i:nth-child(3) {
+    height: 17px;
+    width: 17px;
+    background-color: #0b5cb5;
+}
+
+.eight-section-title .square-shape i:nth-child(4) {
+    top: 10px;
+    left: 10px;
+    width: 12px;
+    height: 12px;
+    background-color: #09a0fc;
+}
+
+.feature-eight-section .eight-feature-box .feature-icon8 i, .ei-service-icon-text .ei-service-icon i, .eg-how-work-section .ei-how-work-content-item .eg-how-work-icon-text .eg-how-work-icon i {
+    display: block;
+    background-image: -moz-linear-gradient(173deg,#fff 30%,#fff 67%,#fff 99%);
+    background-image: -webkit-linear-gradient(
+173deg
+,#fff 30%,#fff 67%,#fff 99%);
+    background-image: -ms-linear-gradient(173deg,#fff 30%,#fff 67%,#fff 99%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.elementor-40 .elementor-element.elementor-element-ce69487 .feature-eight-section .eight-feature-box {
+    min-height: 380px;
+    background-color: #0b5cb5ff;
+}
+
+.elementor-40 .elementor-element.elementor-element-b351f94:not(.elementor-motion-effects-element-type-background), .elementor-40 .elementor-element.elementor-element-b351f94 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+    background-color: #0e3a70ff;
+}
+.elementor-40 .elementor-element.elementor-element-ce69487 .feature-eight-section .eight-feature-box .feature-icon8 .ei-icon-bg {
+    background-color: #0e3a6f;
+}
+
+.feature-eight-section .eight-feature-box .ei-feature-more {
+    background-color: #09a0fc;
+}
+
+.feature-eight-section .eight-feature-box .feature-icon8:before {
+    -webkit-animation: rotate 1.8s linear infinite;
+    animation: rotate 1.8s linear infinite;
+    background: #09a0fc;
+}
+.feature-eight-section .eight-feature-box .feature-icon8:after {
+    animation: rotate 1.2s linear reverse infinite;
+    background: #ffffff;
+}
+@media screen and (max-width: 1080px){
+    .eight-banner-section .eight-banner-content .ei-banner-mbl-mockup {
+        position: inherit;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        display: initial;
+    }
+    .eight-banner-section .eight-banner-content .banner-content-box {
+        max-width: 650px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    .eight-banner-section .eight-banner-content h1 {
+        font-size: 30px;
+    }
+}
+
+.elementor-40 .elementor-element.elementor-element-225558a .eight-service-section {
+    background-color: #0b5cb5ff;
+}
+
+.elementor-40 .elementor-element.elementor-element-225558a .ei-service-icon-text .ei-service-icon {
+    background-color: #0e3a6f;
+}
+
+.ei-service-icon-text .ei-service-icon:after, .eg-how-work-section .ei-how-work-content-item .eg-how-work-icon-text .eg-how-work-icon:after {
+    background-image: -moz-linear-gradient(173deg,#0b5cb5 0%,#0e3a6f 53%,#0b5cb5 99%);
+    background-image: -webkit-linear-gradient(173deg,#0b5cb5 0%,#0e3a6f 53%,#0b5cb5 99%);
+    background-image: -ms-linear-gradient(173deg,#0b5cb5 0%,#0e3a6f 53%,#0b5cb5 99%);
+}
+
+.elementor-40 .elementor-element.elementor-element-225558a .eight-service-section {
+    background-color: #0b5cb5ff;
+}
+.elementor-40 .elementor-element.elementor-element-225558a .ei-service-icon-text .ei-service-icon {
+    background-color: #0e3a6f;
+}
+
+.elementor-40 .elementor-element.elementor-element-c018eb6 .eg-fun-fact-section {
+    background-color: #09a1fcff;
+    background: rgb(9,161,252);
+    background: linear-gradient(90deg, rgba(9,161,252,1) 0%, rgba(14,58,112,1) 100%);
+}
+
+.eg-fun-fact-section .eg-funfact-text .fun-fact-counter .eg-counter-number:nth-child(1) .odometer, .eg-fun-fact-section .eg-funfact-text .fun-fact-counter .eg-counter-number:nth-child(1) strong {
+    color: #009cff;
+}
+
+.eg-fun-fact-section .eg-funfact-text .fun-fact-counter .eg-counter-number:nth-child(2) .odometer, .eg-fun-fact-section .eg-funfact-text .fun-fact-counter .eg-counter-number:nth-child(2) strong {
+    color: #009cff;
+}
+.eg-fun-fact-section .eg-funfact-text .fun-fact-counter .eg-counter-number:nth-child(3) .odometer, .eg-fun-fact-section .eg-funfact-text .fun-fact-counter .eg-counter-number:nth-child(3) strong {
+    color: #009cff;
+}
+
+// columnas 
+
+.col-lg-3.col-md-6.wow.fadeFromUp {
+    flex: 0 0 33%;
+    max-width: 33%;
+}
+
+
+.eight-banner-section .eight-banner-content .banner-content-box {
+    max-width: 400px;
+}
+
+
+.eight-service-section:after {
+    background-image: url(https://referjobsec.com/wp-content/uploads/2021/08/imagen-bolita-dos.png);
+}
+
+.eg-fun-fact-section .eg-fun-fact-mockup .fn-shape-item1 {
+    top: 1px;
+    left: -20px;
+    max-width: 250px;
+}
+
+
+.elementor-40 .elementor-element.elementor-element-ad34c00 .eg-how-work-section {
+    background-color: #0e3a6f;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
